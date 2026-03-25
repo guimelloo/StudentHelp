@@ -9,14 +9,14 @@ export async function installDependencies() {
   try {
     execSync('cd backend && npm install', { stdio: 'inherit' });
   } catch (error) {
-    console.error('Error installing backend dependencies:', error.message);
+    console.error('Error installing backend dependencies:', error instanceof Error ? error.message : String(error));
   }
 
   console.log("📦 Installing frontend dependencies...");
   try {
     execSync('cd frontend && npm install', { stdio: 'inherit' });
   } catch (error) {
-    console.error('Error installing frontend dependencies:', error.message);
+    console.error('Error installing frontend dependencies:', error instanceof Error ? error.message : String(error));
   }
 
   console.log("✅ Dependencies installed successfully!");

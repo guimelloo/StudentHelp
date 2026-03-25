@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-export async function dbInstall(feature) {
+export async function dbInstall(feature: string) {
   console.log(chalk.blue(`\n📦 Installing ${feature} database via Docker...\n`));
 
   switch (feature.toLowerCase()) {

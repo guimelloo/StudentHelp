@@ -17,7 +17,7 @@ export async function devCommand() {
     
     console.log(chalk.yellow('To stop the environment, run: docker-compose down\n'));
   } catch (error) {
-    console.error(chalk.red('Error starting environment:'), error.message);
+    console.error(chalk.red('Error starting environment:'), error instanceof Error ? error.message : String(error));
     throw error;
   }
 }

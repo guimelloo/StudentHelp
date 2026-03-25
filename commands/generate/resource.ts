@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 
-export async function generateResource(resourceName) {
+export async function generateResource(resourceName: string) {
   const resourceLower = resourceName.toLowerCase();
   const resourcePascal = resourceName.charAt(0).toUpperCase() + resourceName.slice(1);
 
@@ -15,16 +15,22 @@ export async function generateResource(resourceName) {
     fs.ensureDirSync(backendPath);
 
     // Helper function to replace template variables
-    const replaceContent = (content, name) => {
+    const replaceContent = (content: string, name: string) => {
       return content
         .replace(/Resource/g, name)
         .replace(/resource/g, name.toLowerCase());
     };
 
     // Copy and customize files
-    const moduleTemplate = fs.readFileSync(path.resolve('.', 'node_modules/student-help/templates/backend/module.ts'), 'utf-8').catch(() => 
-      fs.readFileSync(path.resolve(import.meta.url, '../../../templates/backend/module.ts'), 'utf-8')
-    );
+    const primaryPath = path.resolve('.', 'node_modules/student-help/templates/backend/module.ts');
+    const fallbackPath = path.resolve(import.meta.url, '../../../templates/backend/module.ts');
+    
+    let moduleTemplate: string;
+    try {
+      moduleTemplate = fs.readFileSync(primaryPath, 'utf-8');
+    } catch {
+      moduleTemplate = fs.readFileSync(fallbackPath, 'utf-8');
+    }
 
     const backendDir = path.resolve('.', 'node_modules/student-help/templates/backend');
     const templatesDir = path.resolve(import.meta.url, '../../../templates/backend');
@@ -172,7 +178,7 @@ export default function ${resourcePascal}Page() {
     console.log(`  3. Create frontend interface in Next.js\n`);
 
   } catch (error) {
-    console.error(chalk.red('Error generating resource:'), error.message);
+    console.error(chalk.red('Error generating resource:'), error instanceof Error ? error.message : String(error));
     throw error;
   }
 }

@@ -25,7 +25,7 @@ export async function generateAuth() {
     console.log('  2. Implement authentication logic in AuthService');
     console.log('  3. Configure passport strategies in auth.strategy.ts\n');
   } catch (error) {
-    console.error(chalk.red('Error generating auth:'), error.message);
+    console.error(chalk.red('Error generating auth:'), error instanceof Error ? error.message : String(error));
     throw error;
   }
 }

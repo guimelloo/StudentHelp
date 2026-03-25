@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import { execSync } from 'child_process';
 import path from 'path';
 
-export async function newCommand(projectName) {
+export async function newCommand(projectName: string) {
   const projectPath = path.join(process.cwd(), projectName);
   fs.ensureDirSync(projectPath);
 
@@ -10,7 +10,7 @@ export async function newCommand(projectName) {
   try {
     execSync(`npx @nestjs/cli new backend --directory ${projectPath}/backend --package-manager npm`, { stdio: 'inherit' });
   } catch (error) {
-    console.error('Error creating backend:', error.message);
+    console.error('Error creating backend:', error instanceof Error ? error.message : String(error));
     throw error;
   }
 
@@ -18,7 +18,7 @@ export async function newCommand(projectName) {
   try {
     execSync(`npx create-next-app@latest ${projectPath}/frontend --typescript --use-npm --eslint --app --no-src-dir --import-alias '@/*'`, { stdio: 'inherit' });
   } catch (error) {
-    console.error('Error creating frontend:', error.message);
+    console.error('Error creating frontend:', error instanceof Error ? error.message : String(error));
     throw error;
   }
 
