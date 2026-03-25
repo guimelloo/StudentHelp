@@ -1,0 +1,50 @@
+# Development dependencies
+node_modules/
+.npmrc
+
+# Build and test
+*.ts
+tsconfig.json
+built/
+dist/
+
+# IDE and editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Tests and examples
+sample-project/
+test/
+__tests__/
+coverage/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# Documentation
+docs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.env
+.env.local
+.env.*.local
+Makefile
+
+# Root files
+CONTRIBUTING.md
+.editorconfig

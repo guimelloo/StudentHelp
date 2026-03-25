@@ -1,0 +1,61 @@
+{
+  "name": "student-help",
+  "version": "2.0.0",
+  "description": "🎓 Student Help Framework - Create full-stack projects in minutes with integrated StudentHelp utilities module",
+  "main": "cli.mjs",
+  "type": "module",
+  "preferGlobal": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node bin/student-help.js",
+    "dev": "node --loader ts-node/esm bin/student-help.js",
+    "prepare": "npm run build 2>/dev/null || true"
+  },
+  "bin": {
+    "student-help": "./bin/student-help.js"
+  },
+  "files": [
+    "bin",
+    "cli.mjs",
+    "commands",
+    "templates",
+    "utils",
+    "package.json",
+    "README.md"
+  ],
+  "keywords": [
+    "framework",
+    "nestjs",
+    "nextjs",
+    "cli",
+    "students",
+    "fullstack",
+    "generator",
+    "scaffold"
+  ],
+  "author": "Student Help Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/student-help"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/student-help/issues"
+  },
+  "homepage": "https://github.com/yourusername/student-help#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "fs-extra": "^11.3.4",
+    "ora": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
